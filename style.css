@@ -38,4 +38,47 @@ h1 {
 
 .input {
   display: flex;
+  width: 300px;
+  height: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input input {
+  border-radius: 5px;
+  height: 20px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 0 4px black;
+}
+
+button {
+  padding: 10px;
+  width: 150px;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px black;
+}
+
+button:hover {
+  background: black;
+  color: white;
+}
+
+.lista {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  color: aliceblue;
+  width: 300px;
+  height: 100px;
+  border-radius: 5px;
+  background: white;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px black;
 }
