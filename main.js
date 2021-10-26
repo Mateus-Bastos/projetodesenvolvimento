@@ -17,9 +17,9 @@ function cadastro() {
     cpf !== '' &&
     data !== ''
   ) {
-    list.textContent = 'oi'
+    list.textContent = `Cadastro realizado com sucesso: ${nome} ${sobrenome} ${email} ${cpf} ${data}`
   } else {
-    3
+    list.textContent = 'preencha todos os campos'
   }
 }
 
