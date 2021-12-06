@@ -14,7 +14,7 @@ body {
 .lista-container {
   font-size: 20px;
   margin-top: 35px;
-  width: 80%;
+  width: 100%;
   margin: auto;
   background-color: gray;
 }
@@ -61,7 +61,7 @@ body {
 }
 
 .cm-header {
-  background-color: rgba(185, 185, 185, 0.8);
+  background-color: rgba(147, 145, 145, 0.8);
   font-weight: bolder;
 }
 
@@ -76,7 +76,7 @@ body {
   background-color: rgb(217, 2, 2);
 }
 .cm-add-entry {
-  flex-basis: 10.5%;
+  flex-basis: 9.5%;
   text-align: center;
   cursor: pointer;
   background-color: rgb(7, 183, 7);
