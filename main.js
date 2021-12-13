@@ -44,14 +44,17 @@ let refreshTable = () => {
     currentEditBtn.className = 'lista-column cm-edit'
     currentDeleteBtn.className = 'lista-column cm-delete'
 
+    currentDeleteBtn.setAttribute('title', 'Deletar Usuário')
+    currentEditBtn.setAttribute('title', 'Editar Usuário')
+
     currentNameCol.innerHTML = cmsTableKeys[i]
     currentPhoneCol.innerHTML = cmsTable[cmsTableKeys[i]].phone
     currentCpfCol.innerHTML = cmsTable[cmsTableKeys[i]].cpf
     currentDateCol.innerHTML = cmsTable[cmsTableKeys[i]].date
     currentEmailCol.innerHTML = cmsTable[cmsTableKeys[i]].email
 
-    currentDeleteBtn.innerHTML = '<i class="fas fa-dumpster"></i>'
-    currentEditBtn.innerHTML = '<i class="fas fa-user-edit"></i>'
+    currentDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> '
+    currentEditBtn.innerHTML = '<i class="fas fa-user-edit"></i> '
 
     currentRow.appendChild(currentNameCol)
     currentRow.appendChild(currentPhoneCol)
