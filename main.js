@@ -25,87 +25,90 @@ let refreshTable = () => {
   newTableBody.id = 'tableBody'
   tableContaier.appendChild(newTableBody)
 
-  for (let i = 0; i < cmsTableKeys.length; i++) {
-    let currentRow = document.createElement('div')
-    let currentNameCol = document.createElement('div')
-    let currentPhoneCol = document.createElement('div')
-    let currentCpfCol = document.createElement('div')
-    let currentDateCol = document.createElement('div')
-    let currentEmailCol = document.createElement('div')
-    let currentEditBtn = document.createElement('div')
-    let currentDeleteBtn = document.createElement('div')
+  function createDivs() {
+    for (let i = 0; i < cmsTableKeys.length; i++) {
+      let currentRow = document.createElement('div')
+      let currentNameCol = document.createElement('div')
+      let currentPhoneCol = document.createElement('div')
+      let currentCpfCol = document.createElement('div')
+      let currentDateCol = document.createElement('div')
+      let currentEmailCol = document.createElement('div')
+      let currentEditBtn = document.createElement('div')
+      let currentDeleteBtn = document.createElement('div')
 
-    currentRow.className = 'lista-row'
-    currentNameCol.className = 'lista-column lista-name'
-    currentPhoneCol.className = 'lista-column lista-phone'
-    currentCpfCol.className = 'lista-column lista-cpf'
-    currentDateCol.className = 'lista-column lista-date'
-    currentEmailCol.className = 'lista-column lista-email'
-    currentEditBtn.className = 'lista-column cm-edit'
-    currentDeleteBtn.className = 'lista-column cm-delete'
+      currentRow.className = 'lista-row'
+      currentNameCol.className = 'lista-column lista-name'
+      currentPhoneCol.className = 'lista-column lista-phone'
+      currentCpfCol.className = 'lista-column lista-cpf'
+      currentDateCol.className = 'lista-column lista-date'
+      currentEmailCol.className = 'lista-column lista-email'
+      currentEditBtn.className = 'lista-column cm-edit'
+      currentDeleteBtn.className = 'lista-column cm-delete'
 
-    currentDeleteBtn.setAttribute('title', 'Deletar Usuário')
-    currentEditBtn.setAttribute('title', 'Editar Usuário')
+      currentDeleteBtn.setAttribute('title', 'Deletar Usuário')
+      currentEditBtn.setAttribute('title', 'Editar Usuário')
 
-    currentNameCol.innerHTML = cmsTableKeys[i]
-    currentPhoneCol.innerHTML = cmsTable[cmsTableKeys[i]].phone
-    currentCpfCol.innerHTML = cmsTable[cmsTableKeys[i]].cpf
-    currentDateCol.innerHTML = cmsTable[cmsTableKeys[i]].date
-    currentEmailCol.innerHTML = cmsTable[cmsTableKeys[i]].email
+      currentNameCol.innerHTML = cmsTableKeys[i]
+      currentPhoneCol.innerHTML = cmsTable[cmsTableKeys[i]].phone
+      currentCpfCol.innerHTML = cmsTable[cmsTableKeys[i]].cpf
+      currentDateCol.innerHTML = cmsTable[cmsTableKeys[i]].date
+      currentEmailCol.innerHTML = cmsTable[cmsTableKeys[i]].email
 
-    currentDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> '
-    currentEditBtn.innerHTML = '<i class="fas fa-user-edit"></i> '
+      currentDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> '
+      currentEditBtn.innerHTML = '<i class="fas fa-user-edit"></i> '
 
-    currentRow.appendChild(currentNameCol)
-    currentRow.appendChild(currentPhoneCol)
-    currentRow.appendChild(currentCpfCol)
-    currentRow.appendChild(currentDateCol)
-    currentRow.appendChild(currentEmailCol)
-    currentRow.appendChild(currentEditBtn)
-    currentRow.appendChild(currentDeleteBtn)
-    newTableBody.appendChild(currentRow)
+      currentRow.appendChild(currentNameCol)
+      currentRow.appendChild(currentPhoneCol)
+      currentRow.appendChild(currentCpfCol)
+      currentRow.appendChild(currentDateCol)
+      currentRow.appendChild(currentEmailCol)
+      currentRow.appendChild(currentEditBtn)
+      currentRow.appendChild(currentDeleteBtn)
+      newTableBody.appendChild(currentRow)
 
-    let ageButtonMoreThirty = document.getElementById('moreThirty')
-    ageButtonMoreThirty.addEventListener('click', () => {
-      function age() {
-        var dataAtual = new Date()
-        var dataNascimento = new Date(currentDateCol.innerHTML)
+      let ageButtonMoreThirty = document.getElementById('moreThirty')
+      ageButtonMoreThirty.addEventListener('click', () => {
+        function age() {
+          var dataAtual = new Date()
+          var dataNascimento = new Date(currentDateCol.innerHTML)
 
-        var anos = dataAtual.getFullYear() - dataNascimento.getFullYear()
+          var anos = dataAtual.getFullYear() - dataNascimento.getFullYear()
 
-        if (anos > 30) {
-          currentNameCol.className =
-            'set-age-morethirty lista-column lista-name'
-        } else {
-          currentNameCol.className = ' lista-column lista-name'
+          if (anos > 30) {
+            currentNameCol.className =
+              'set-age-morethirty lista-column lista-name'
+          } else {
+            currentNameCol.className = ' lista-column lista-name'
+          }
         }
-      }
-      age()
-    })
+        age()
+      })
 
-    let ageButtonUnderThirty = document.getElementById('underThirty')
-    ageButtonUnderThirty.addEventListener('click', () => {
-      function age() {
-        var dataAtual = new Date()
-        var dataNascimento = new Date(currentDateCol.innerHTML)
+      let ageButtonUnderThirty = document.getElementById('underThirty')
+      ageButtonUnderThirty.addEventListener('click', () => {
+        function age() {
+          var dataAtual = new Date()
+          var dataNascimento = new Date(currentDateCol.innerHTML)
 
-        var anos = dataAtual.getFullYear() - dataNascimento.getFullYear()
+          var anos = dataAtual.getFullYear() - dataNascimento.getFullYear()
 
-        if (anos < 30) {
-          currentNameCol.className =
-            'set-age-underthirty lista-column lista-name'
-        } else {
-          currentNameCol.className = ' lista-column lista-name'
+          if (anos < 30) {
+            currentNameCol.className =
+              'set-age-underthirty lista-column lista-name'
+          } else {
+            currentNameCol.className = ' lista-column lista-name'
+          }
         }
-      }
-      age()
-    })
+        age()
+      })
 
-    let cleanAgeButon = document.getElementById('clean')
-    cleanAgeButon.addEventListener('click', () => {
-      currentNameCol.className = ' lista-column lista-name'
-    })
+      let cleanAgeButon = document.getElementById('clean')
+      cleanAgeButon.addEventListener('click', () => {
+        currentNameCol.className = ' lista-column lista-name'
+      })
+    }
   }
+  createDivs()
 
   let enableDisableNewUserModal = option => {
     let newPersonName = document.getElementById('newPersonName')
@@ -125,6 +128,7 @@ let refreshTable = () => {
     newPersonModal.className = `${option}-modal`
     backdrop.className = `${option}-modal`
   }
+
   let addNewEntryBtn = document.getElementById('cmAddNewEntry')
   let editBtns = document.getElementsByClassName('cm-edit')
   let deleteBtns = document.getElementsByClassName('cm-delete')
