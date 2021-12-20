@@ -143,66 +143,69 @@ let refreshTable = () => {
     let newPersonDate = document.getElementById('newPersonDate').value
     let newPersonEmail = document.getElementById('newPersonEmail').value
 
-    if (newPersonName === '')
-      document.getElementById('newPersonName').className = 'input-err'
-    else document.getElementById('newPersonName').className = ''
+    function inputError() {
+      if (newPersonName === '')
+        document.getElementById('newPersonName').className = 'input-err'
+      else document.getElementById('newPersonName').className = ''
 
-    if (newPersonPhone === '')
-      document.getElementById('newPersonPhone').className = 'input-err'
-    else document.getElementById('newPersonPhone').className = ''
+      if (newPersonPhone === '')
+        document.getElementById('newPersonPhone').className = 'input-err'
+      else document.getElementById('newPersonPhone').className = ''
 
-    if (newPersonCpf === '')
-      document.getElementById('newPersonCpf').className = 'input-err'
-    else document.getElementById('newPersonCpf').className = ''
+      if (newPersonCpf === '')
+        document.getElementById('newPersonCpf').className = 'input-err'
+      else document.getElementById('newPersonCpf').className = ''
 
-    if (newPersonDate === '')
-      document.getElementById('newPersonDate').className = 'input-err'
-    else document.getElementById('newPersonDate').className = ''
+      if (newPersonDate === '')
+        document.getElementById('newPersonDate').className = 'input-err'
+      else document.getElementById('newPersonDate').className = ''
 
-    if (newPersonEmail === '')
-      document.getElementById('newPersonEmail').className = 'input-err'
-    else document.getElementById('newPersonEmail').className = ''
+      if (newPersonEmail === '')
+        document.getElementById('newPersonEmail').className = 'input-err'
+      else document.getElementById('newPersonEmail').className = ''
 
-    if (
-      newPersonName !== '' &&
-      newPersonEmail !== '' &&
-      newPersonCpf !== '' &&
-      newPersonPhone !== '' &&
-      newPersonDate !== ''
-    ) {
-      function Validacao() {
-        if (
-          newPersonEmail.indexOf('@') == -1 ||
-          newPersonEmail.indexOf('.') == -1 ||
-          newPersonEmail.indexOf('.') - newPersonEmail.indexOf('@') == 1
-        ) {
-          document.getElementById('newPersonEmail').className = 'input-err'
-        } else if (
-          newPersonPhone.indexOf('(') !== 0 ||
-          newPersonPhone.indexOf(')') !== 3 ||
-          newPersonPhone.indexOf('-') !== 9
-        ) {
-          document.getElementById('newPersonPhone').className = 'input-err'
-        } else if (
-          (newPersonCpf.indexOf('.') !== 3 &&
-            newPersonCpf.indexOf('.') !== 7) ||
-          newPersonCpf.indexOf('-') !== 11
-        ) {
-          document.getElementById('newPersonCpf').className = 'input-err'
-        } else {
-          cmsTable[newPersonName] = {
-            phone: newPersonPhone,
-            cpf: newPersonCpf,
-            date: newPersonDate,
-            email: newPersonEmail
+      if (
+        newPersonName !== '' &&
+        newPersonEmail !== '' &&
+        newPersonCpf !== '' &&
+        newPersonPhone !== '' &&
+        newPersonDate !== ''
+      ) {
+        function Validacao() {
+          if (
+            newPersonEmail.indexOf('@') == -1 ||
+            newPersonEmail.indexOf('.') == -1 ||
+            newPersonEmail.indexOf('.') - newPersonEmail.indexOf('@') == 1
+          ) {
+            document.getElementById('newPersonEmail').className = 'input-err'
+          } else if (
+            newPersonPhone.indexOf('(') !== 0 ||
+            newPersonPhone.indexOf(')') !== 3 ||
+            newPersonPhone.indexOf('-') !== 9
+          ) {
+            document.getElementById('newPersonPhone').className = 'input-err'
+          } else if (
+            (newPersonCpf.indexOf('.') !== 3 &&
+              newPersonCpf.indexOf('.') !== 7) ||
+            newPersonCpf.indexOf('-') !== 11
+          ) {
+            document.getElementById('newPersonCpf').className = 'input-err'
+          } else {
+            cmsTable[newPersonName] = {
+              phone: newPersonPhone,
+              cpf: newPersonCpf,
+              date: newPersonDate,
+              email: newPersonEmail
+            }
+            localStorage.setItem(tableKey, JSON.stringify(cmsTable))
+            enableDisableNewUserModal('disable')
+            refreshTable()
           }
-          localStorage.setItem(tableKey, JSON.stringify(cmsTable))
-          enableDisableNewUserModal('disable')
-          refreshTable()
         }
+        Validacao()
       }
-      Validacao()
     }
+    inputError()
   })
   newPersonCancelBtn.addEventListener('click', () => {
     enableDisableNewUserModal('disable')
